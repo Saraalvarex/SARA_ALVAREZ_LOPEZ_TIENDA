@@ -1,15 +1,22 @@
 ﻿@model List<Libro>
 @{
-    ViewData["Title"] = "Home Page";
-
+    ViewData["Title"] = "Libros";
+    int registros = (int)ViewBag.REGISTROS;
+    int cnt = 1;
 }
 
-@if(Model!=null){
+@if (Model != null)
+{
+    @for (int i = 0; i < registros; i += 3)
+    {
+        <a class="btn btn-info" asp-controller="Libros" asp-action="Index" asp-route-posicion="@i">@(cnt++)</a>
+    }
     <table class="table table-dark">
         <thead>
             <tr>
                 <th scope="col">Titulo</th>
                 <th scope="col">Imagen</th>
+                <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -21,6 +28,11 @@
                     <td><img src="~/images/@libro.Portada" style="width:150px" /></td>
                     <td><a asp-controller="Home" asp-action="Details">Detalles</a></td>
                     <td><a asp-controller="Libros" asp-action="Details">Detalles</a></td>
+@*                    <td>
+                        <a asp-controller="Store" asp-action="AgregarCarrito" asp-route-idProduct="@item.IdItem">
+                           Comprar
+                        </a>
+                    </td>*@
                 </tr>
             }
         </tbody>

@@ -26,5 +26,44 @@ namespace SARA_ALVAREZ_LOPEZ_TIENDA.Repositories
         {
             return await this.context.Libros.ToListAsync();
         }
+        public async Task<LibrosPaginados> GetLibrosPagAsync(int posicion)
+        {
+            List<Libro> libros = await this.GetLibros();
+            int numregistros = libros.Count;
+
+            List<Libro> listalibrospaginados = libros.Skip(posicion).Take(3).ToList();
+
+            LibrosPaginados librosPaginados = new LibrosPaginados
+            {
+                Libros = listalibrospaginados,
+                NumRegistros = numregistros
+            };
+
+            return librosPaginados;
+        }
+        public async Task<Libro> GetLibro(int idlibro)
+        {
+            return await this.context.Libros.FirstOrDefaultAsync(i => i.IdLibro == idlibro);
+
+        }
+        public async Task<Usuario> LoginUusarioAsync(string username, string pass)
+        {
+            Usuario user = await this.context.Usuarios.FirstOrDefaultAsync(u => u.Nombre == username);
+            if (user == null)
+            {
+                return null;
+            }
+            else
+            {
+                if (user.Pass == pass)
+                {
+                    return user;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
     }
 }

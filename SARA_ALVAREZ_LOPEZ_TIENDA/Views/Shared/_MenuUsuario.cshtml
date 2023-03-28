@@ -1,0 +1,19 @@
+﻿@if (Context.User.Identity.IsAuthenticated == true)
+{
+    //libros: 2, hola barney, cerrar sesion
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="Carrito">Libros: </a>
+    </li>
+    <li class="nav-item">
+       <p>Hola @Context.User.Identity.Name</p>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link btn btn-danger" asp-area="" asp-controller="Managed" asp-action="LogOut">LogOut</a>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Managed" asp-action="LogIn">LogIn</a>
+    </li>
+}
