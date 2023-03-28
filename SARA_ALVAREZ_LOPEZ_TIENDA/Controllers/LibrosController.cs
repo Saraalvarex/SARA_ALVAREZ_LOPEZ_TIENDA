@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SARA_ALVAREZ_LOPEZ_TIENDA.Extensions;
+using SARA_ALVAREZ_LOPEZ_TIENDA.Filters;
 using SARA_ALVAREZ_LOPEZ_TIENDA.Models;
 using SARA_ALVAREZ_LOPEZ_TIENDA.Repositories;
 
@@ -26,6 +29,42 @@ namespace SARA_ALVAREZ_LOPEZ_TIENDA.Controllers
         {
             Libro libro = await this.repo.GetLibro(idlibro);
             return View(libro);
+        }
+
+        //BOTON
+        public IActionResult AddCarrito(int idlibro)
+        {
+            List<int> idslibros = HttpContext.Session.GetObject<List<int>>("CARRITO");
+           
+            //SI CARRITO ESTA EN SESION...
+            if (idslibros != null)
+            {
+                idslibros.Add(idlibro);
+                HttpContext.Session.SetObject("CARRITO", idslibros);
+            }
+            else
+            {
+                //SINO CREO CARRITO EN SESSION
+                List<int> newidslibros = new List<int> { idlibro };
+                HttpContext.Session.SetObject("CARRITO", newidslibros);
+            }
+            return RedirectToAction("Index");
+        }
+        [AuthorizeUsers]
+        public async Task<IActionResult> Carrito(int cantidadItem)
+        {
+            List<int> idslibros = HttpContext.Session.GetObject<List<int>>("CARRITO");
+            List<Libro> items = new List<Libro>();
+            if (idslibros != null)
+            {
+                foreach (int id in idslibros)
+                {
+                    Libro item = await this.repo.GetLibro(id);
+                    items.Add(item);
+                }
+            }
+            ViewBag.CANTIDAD = cantidadItem;
+            return View(items);
         }
     }
 }

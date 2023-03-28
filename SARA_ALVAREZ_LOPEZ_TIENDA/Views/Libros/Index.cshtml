@@ -17,7 +17,7 @@
                 <th scope="col">Titulo</th>
                 <th scope="col">Imagen</th>
                 <th scope="col"></th>
-                <th scope="col"></th>
+@*                <th scope="col"></th>*@
             </tr>
         </thead>
         <tbody>
@@ -26,8 +26,8 @@
                 <tr>
                     <th scope="row">@libro.Titulo</th>
                     <td><img src="~/images/@libro.Portada" style="width:150px" /></td>
-                    <td><a asp-controller="Home" asp-action="Details">Detalles</a></td>
-                    <td><a asp-controller="Libros" asp-action="Details">Detalles</a></td>
+                    @*<td><a asp-controller="Home" asp-action="Details">Detalles</a></td>*@
+                    <td><a asp-controller="Libros" asp-action="Details" asp-route-idlibro="@libro.IdLibro" class="btn btn-info">Detalles</a></td>
 @*                    <td>
                         <a asp-controller="Store" asp-action="AgregarCarrito" asp-route-idProduct="@item.IdItem">
                            Comprar

@@ -1,19 +1,22 @@
-﻿@if (Context.User.Identity.IsAuthenticated == true)
+﻿@{
+    int cantidad = 0;
+    if (Context.Session.GetObject<List<int>>("CARRITO")!= null)
+    {
+        cantidad = Context.Session.GetObject<List<int>>("CARRITO").Count;
+    }
+}
+
+
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Libros" asp-action="Carrito">Libros: @if (cantidad != null) { @cantidad }</a>
+</li>
+@if (Context.User.Identity.IsAuthenticated == true)
 {
     //libros: 2, hola barney, cerrar sesion
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="Carrito">Libros: </a>
-    </li>
     <li class="nav-item">
        <p>Hola @Context.User.Identity.Name</p>
     </li>
     <li class="nav-item">
-        <a class="nav-link btn btn-danger" asp-area="" asp-controller="Managed" asp-action="LogOut">LogOut</a>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Managed" asp-action="LogIn">LogIn</a>
+        <a class="nav-link btn btn-danger" asp-controller="Managed" asp-action="LogOut">LogOut</a>
     </li>
 }
