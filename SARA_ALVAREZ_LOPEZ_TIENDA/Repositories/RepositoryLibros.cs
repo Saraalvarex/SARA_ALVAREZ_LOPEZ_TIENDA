@@ -72,12 +72,12 @@ namespace SARA_ALVAREZ_LOPEZ_TIENDA.Repositories
             this.context.Pedidos.Add(pedido);
             this.context.SaveChanges();
         }
-        public async Task<List<Pedido>> GetPedidos(int idusuario)
+        public async Task<List<VistaPedidos>> GetPedidos(int idusuario)
         {
-            var pedidos = from datos in this.context.Pedidos
-                         where datos.IdUsuario == idusuario
-                         select datos;
-            return await pedidos.ToListAsync();
+            var vistaPedidos = from datos in this.context.VistaPedidos
+                             where datos.IdUsuario == idusuario
+                             select datos;
+            return await vistaPedidos.ToListAsync();
         }
 
         public async Task<Usuario> LoginUsuarioAsync(string username, string pass)

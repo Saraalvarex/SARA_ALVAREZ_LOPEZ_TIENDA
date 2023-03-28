@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SARA_ALVAREZ_LOPEZ_TIENDA.Models.Pedido>
+﻿@model IEnumerable<SARA_ALVAREZ_LOPEZ_TIENDA.Models.VistaPedidos>
 
 @{
     ViewData["Title"] = "VistaPedidos";
@@ -12,53 +12,27 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdPedido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdFactura)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdLibro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdUsuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cantidad)
-            </th>
-            <th></th>
+            <th>Titulo</th>    
+        </tr>
+        <tr>
+            <th>Precio</th>
+        </tr>
+        <tr>
+            <th>Imagen</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.IdPedido)
+                @Html.DisplayFor(modelItem => item.Titulo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdFactura)
+                @Html.DisplayFor(modelItem => item.Precio)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdLibro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdUsuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+                 <img style="width:100px" src="@Html.DisplayFor(modelItem => item.Portada)" />
+             </td>
         </tr>
 }
     </tbody>

@@ -92,7 +92,7 @@ namespace SARA_ALVAREZ_LOPEZ_TIENDA.Controllers
                     this.repo.InsertPedido(libro.IdLibro, idusuario);
                 }
             }
-            List<Pedido> pedidos = await this.repo.GetPedidos(idusuario);
+            List<VistaPedidos> pedidos = await this.repo.GetPedidos(idusuario);
             return View(pedidos);
         }
     }

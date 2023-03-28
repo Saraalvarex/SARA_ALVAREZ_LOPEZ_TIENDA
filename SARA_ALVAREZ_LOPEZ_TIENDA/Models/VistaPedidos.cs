@@ -10,7 +10,7 @@ namespace SARA_ALVAREZ_LOPEZ_TIENDA.Models
         [Column("IDUSUARIO")]
         public int IdUsuario { get; set; }
         [Column("TITULO")]
-        public int Titulo { get; set; }
+        public string Titulo { get; set; }
         [Column("PRECIO")]
         public int Precio { get; set; }
         [Column("PORTADA")]
