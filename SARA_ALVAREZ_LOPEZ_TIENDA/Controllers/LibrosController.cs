@@ -64,7 +64,7 @@ namespace SARA_ALVAREZ_LOPEZ_TIENDA.Controllers
                     libros.Add(libro);
                 }
             }
-            return View();
+            return View(libros);
         }
     }
 }

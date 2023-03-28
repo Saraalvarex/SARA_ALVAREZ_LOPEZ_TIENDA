@@ -1,5 +1,4 @@
-﻿@model IEnumerable<SARA_ALVAREZ_LOPEZ_TIENDA.Models.Libro>
-
+﻿@model List<Libro>
 @{
     ViewData["Title"] = "Carrito";
 }
@@ -13,65 +12,60 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdLibro)
+               IdLibro
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Titulo)
+               Titulo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Autor)
+               Autor
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Editorial)
+               Editorial
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Portada)
+               Portada
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Resumen)
+               Precio
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Precio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdGenero)
+               IdGenero
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdLibro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Autor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Editorial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Portada)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Resumen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Precio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdGenero)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdLibro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Autor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Editorial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Portada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdGenero)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -46,7 +46,7 @@ namespace SARA_ALVAREZ_LOPEZ_TIENDA.Controllers
                 ClaimsPrincipal userPrincipal = new ClaimsPrincipal(identity);
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal);
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Carrito", "Libros");
             }
             else
             {

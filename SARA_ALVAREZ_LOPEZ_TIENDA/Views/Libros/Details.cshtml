@@ -1,4 +1,4 @@
-﻿@model SARA_ALVAREZ_LOPEZ_TIENDA.Models.Libro
+﻿@model Libro
 
 @{
     ViewData["Title"] = "Details";
@@ -62,6 +62,6 @@
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-controller="Libros" asp-area="" asp-action="AddCarrito" asp-route-idlibro="@Html.DisplayNameFor(model => model.IdLibro)">Comprar 🛒</a>
+    <a asp-controller="Libros" asp-area="" asp-action="AddCarrito" asp-route-idlibro="@Model.IdLibro">Comprar 🛒</a>
     <a asp-action="Index">Back to List</a>
 </div>
