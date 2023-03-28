@@ -66,5 +66,34 @@ namespace SARA_ALVAREZ_LOPEZ_TIENDA.Controllers
             }
             return View(libros);
         }
+
+        //public async Task<IActionResult> FinalizarCompra(int idusuario)
+        //{
+        //    List<int> idslibros = HttpContext.Session.GetObject<List<int>>("CARRITO");
+        //    int iduser = idusuario;
+        //    if (idslibros != null)
+        //    {
+        //        foreach (int id in idslibros)
+        //        {
+        //            Libro libro = await this.repo.GetLibro(id);
+        //            this.repo.InsertPedido(libro.IdLibro, idusuario);
+        //        }
+        //    }
+        //    return RedirectToAction("VistaPedidos", iduser);
+        //}
+        public async Task<IActionResult> VistaPedidos(int idusuario)
+        {
+            List<int> idslibros = HttpContext.Session.GetObject<List<int>>("CARRITO");
+            if (idslibros != null)
+            {
+                foreach (int id in idslibros)
+                {
+                    Libro libro = await this.repo.GetLibro(id);
+                    this.repo.InsertPedido(libro.IdLibro, idusuario);
+                }
+            }
+            List<Pedido> pedidos = await this.repo.GetPedidos(idusuario);
+            return View(pedidos);
+        }
     }
 }

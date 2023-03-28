@@ -36,13 +36,13 @@ namespace SARA_ALVAREZ_LOPEZ_TIENDA.Controllers
                     ClaimTypes.Name,
                     ClaimTypes.Role
                 );
-
+                //email
                 Claim claimName = new Claim(ClaimTypes.Name, username);
                 Claim claimId = new Claim(ClaimTypes.NameIdentifier, usuario.IdUsuario.ToString());
-
+                Claim claimfoto = new Claim("Foto", usuario.Foto);
                 identity.AddClaim(claimName);
                 identity.AddClaim(claimId);
-
+                identity.AddClaim(claimfoto);
                 ClaimsPrincipal userPrincipal = new ClaimsPrincipal(identity);
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal);
 

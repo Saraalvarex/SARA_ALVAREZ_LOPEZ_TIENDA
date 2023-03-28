@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Carrito";
 }
-
 <h1>Carrito</h1>
 
 <p>
@@ -60,12 +59,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.IdGenero)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
             </tr>
         }
+        <tr>
+            <a asp-controller="Libros" asp-action="VistaPedidos" asp-route-idusuario="@Context.User.FindFirst(ClaimTypes.NameIdentifier).Value" class="btn btn-danger">Finalizar pedido</a>
+        </tr>
     </tbody>
 </table>
