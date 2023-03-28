@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SARA_ALVAREZ_LOPEZ_TIENDA.Models
 {
-    [Table("LIBRO")]
+    [Table("LIBROS")]
     public class Libro
     {
         [Key]
