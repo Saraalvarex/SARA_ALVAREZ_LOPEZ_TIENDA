@@ -50,21 +50,21 @@ namespace SARA_ALVAREZ_LOPEZ_TIENDA.Controllers
             }
             return RedirectToAction("Index");
         }
+
         [AuthorizeUsers]
-        public async Task<IActionResult> Carrito(int cantidadItem)
+        public async Task<IActionResult> Carrito()
         {
             List<int> idslibros = HttpContext.Session.GetObject<List<int>>("CARRITO");
-            List<Libro> items = new List<Libro>();
+            List<Libro> libros = new List<Libro>();
             if (idslibros != null)
             {
                 foreach (int id in idslibros)
                 {
-                    Libro item = await this.repo.GetLibro(id);
-                    items.Add(item);
+                    Libro libro = await this.repo.GetLibro(id);
+                    libros.Add(libro);
                 }
             }
-            ViewBag.CANTIDAD = cantidadItem;
-            return View(items);
+            return View();
         }
     }
 }

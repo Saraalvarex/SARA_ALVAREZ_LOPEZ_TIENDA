@@ -46,7 +46,7 @@ namespace SARA_ALVAREZ_LOPEZ_TIENDA.Repositories
             return await this.context.Libros.FirstOrDefaultAsync(i => i.IdLibro == idlibro);
 
         }
-        public async Task<Usuario> LoginUusarioAsync(string username, string pass)
+        public async Task<Usuario> LoginUsuarioAsync(string username, string pass)
         {
             Usuario user = await this.context.Usuarios.FirstOrDefaultAsync(u => u.Nombre == username);
             if (user == null)

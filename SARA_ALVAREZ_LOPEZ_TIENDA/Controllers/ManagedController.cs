@@ -24,10 +24,10 @@ namespace SARA_ALVAREZ_LOPEZ_TIENDA.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<IActionResult> LogIn(string username, string password)
+        public async Task<IActionResult> LogIn(string username, string pass)
         {
 
-            Usuario usuario = await this.repo.LoginUusarioAsync(username, password);
+            Usuario usuario = await this.repo.LoginUsuarioAsync(username, pass);
 
             if (usuario != null)
             {

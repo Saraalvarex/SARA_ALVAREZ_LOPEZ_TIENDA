@@ -13,10 +13,10 @@ namespace SARA_ALVAREZ_LOPEZ_TIENDA.Filters
             {
                 context.Result = this.GetRoute("Managed", "LogIn");
             }
-            else
-            {
-                context.Result = this.GetRoute("Home", "Index");
-            }
+            //else
+            //{
+            //    context.Result = this.GetRoute("Libros", "Index");
+            //}
         }
 
         private RedirectToRouteResult GetRoute(string controller, string action)
